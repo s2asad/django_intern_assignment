@@ -1,0 +1,88 @@
+{
+  "info": {
+    "name": "Django Intern Assignment API",
+    "description": "Modular Entity and Mapping System - APIView Only",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:8000/api", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Vendors",
+      "item": [
+        { "name": "List Vendors", "request": { "method": "GET", "url": "{{base_url}}/vendors/" } },
+        { "name": "List Active Vendors", "request": { "method": "GET", "url": "{{base_url}}/vendors/?is_active=true" } },
+        { "name": "Create Vendor", "request": { "method": "POST", "url": "{{base_url}}/vendors/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Acme Corp\",\n  \"code\": \"ACM001\",\n  \"description\": \"A reliable vendor\"\n}" } } },
+        { "name": "Retrieve Vendor", "request": { "method": "GET", "url": "{{base_url}}/vendors/1/" } },
+        { "name": "Vendor Nested (with Products)", "request": { "method": "GET", "url": "{{base_url}}/vendors/1/nested/" } },
+        { "name": "Update Vendor", "request": { "method": "PUT", "url": "{{base_url}}/vendors/1/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Acme Corp Updated\",\n  \"code\": \"ACM001\"\n}" } } },
+        { "name": "Partial Update Vendor", "request": { "method": "PATCH", "url": "{{base_url}}/vendors/1/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"description\": \"Updated description\"\n}" } } },
+        { "name": "Delete Vendor", "request": { "method": "DELETE", "url": "{{base_url}}/vendors/1/" } }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        { "name": "List Products", "request": { "method": "GET", "url": "{{base_url}}/products/" } },
+        { "name": "Create Product", "request": { "method": "POST", "url": "{{base_url}}/products/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Product Alpha\",\n  \"code\": \"PRD001\",\n  \"description\": \"First product\"\n}" } } },
+        { "name": "Retrieve Product", "request": { "method": "GET", "url": "{{base_url}}/products/1/" } },
+        { "name": "Product Nested (with Courses)", "request": { "method": "GET", "url": "{{base_url}}/products/1/nested/" } },
+        { "name": "Update Product", "request": { "method": "PUT", "url": "{{base_url}}/products/1/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Product Alpha Updated\",\n  \"code\": \"PRD001\"\n}" } } },
+        { "name": "Partial Update Product", "request": { "method": "PATCH", "url": "{{base_url}}/products/1/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"is_active\": false\n}" } } },
+        { "name": "Delete Product", "request": { "method": "DELETE", "url": "{{base_url}}/products/1/" } }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        { "name": "List Courses", "request": { "method": "GET", "url": "{{base_url}}/courses/" } },
+        { "name": "Create Course", "request": { "method": "POST", "url": "{{base_url}}/courses/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Python Basics\",\n  \"code\": \"CRS001\",\n  \"description\": \"Intro to Python\"\n}" } } },
+        { "name": "Retrieve Course", "request": { "method": "GET", "url": "{{base_url}}/courses/1/" } },
+        { "name": "Course Nested (with Certifications)", "request": { "method": "GET", "url": "{{base_url}}/courses/1/nested/" } },
+        { "name": "Update Course", "request": { "method": "PUT", "url": "{{base_url}}/courses/1/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Python Basics Updated\",\n  \"code\": \"CRS001\"\n}" } } },
+        { "name": "Delete Course", "request": { "method": "DELETE", "url": "{{base_url}}/courses/1/" } }
+      ]
+    },
+    {
+      "name": "Certifications",
+      "item": [
+        { "name": "List Certifications", "request": { "method": "GET", "url": "{{base_url}}/certifications/" } },
+        { "name": "Create Certification", "request": { "method": "POST", "url": "{{base_url}}/certifications/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"name\": \"Python Certified Developer\",\n  \"code\": \"CERT001\",\n  \"description\": \"PCD certification\"\n}" } } },
+        { "name": "Retrieve Certification", "request": { "method": "GET", "url": "{{base_url}}/certifications/1/" } },
+        { "name": "Delete Certification", "request": { "method": "DELETE", "url": "{{base_url}}/certifications/1/" } }
+      ]
+    },
+    {
+      "name": "Vendor Product Mappings",
+      "item": [
+        { "name": "List All Mappings", "request": { "method": "GET", "url": "{{base_url}}/vendor-product-mappings/" } },
+        { "name": "Filter by Vendor", "request": { "method": "GET", "url": "{{base_url}}/vendor-product-mappings/?vendor_id=1" } },
+        { "name": "Filter by Product", "request": { "method": "GET", "url": "{{base_url}}/vendor-product-mappings/?product_id=1" } },
+        { "name": "Create Mapping", "request": { "method": "POST", "url": "{{base_url}}/vendor-product-mappings/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"vendor\": 1,\n  \"product\": 1,\n  \"primary_mapping\": true\n}" } } },
+        { "name": "Retrieve Mapping", "request": { "method": "GET", "url": "{{base_url}}/vendor-product-mappings/1/" } },
+        { "name": "Delete Mapping", "request": { "method": "DELETE", "url": "{{base_url}}/vendor-product-mappings/1/" } }
+      ]
+    },
+    {
+      "name": "Product Course Mappings",
+      "item": [
+        { "name": "List All Mappings", "request": { "method": "GET", "url": "{{base_url}}/product-course-mappings/" } },
+        { "name": "Filter by Product", "request": { "method": "GET", "url": "{{base_url}}/product-course-mappings/?product_id=1" } },
+        { "name": "Create Mapping", "request": { "method": "POST", "url": "{{base_url}}/product-course-mappings/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"product\": 1,\n  \"course\": 1,\n  \"primary_mapping\": true\n}" } } },
+        { "name": "Retrieve Mapping", "request": { "method": "GET", "url": "{{base_url}}/product-course-mappings/1/" } },
+        { "name": "Delete Mapping", "request": { "method": "DELETE", "url": "{{base_url}}/product-course-mappings/1/" } }
+      ]
+    },
+    {
+      "name": "Course Certification Mappings",
+      "item": [
+        { "name": "List All Mappings", "request": { "method": "GET", "url": "{{base_url}}/course-certification-mappings/" } },
+        { "name": "Filter by Course", "request": { "method": "GET", "url": "{{base_url}}/course-certification-mappings/?course_id=1" } },
+        { "name": "Create Mapping", "request": { "method": "POST", "url": "{{base_url}}/course-certification-mappings/", "header": [{"key":"Content-Type","value":"application/json"}], "body": { "mode": "raw", "raw": "{\n  \"course\": 1,\n  \"certification\": 1,\n  \"primary_mapping\": true\n}" } } },
+        { "name": "Retrieve Mapping", "request": { "method": "GET", "url": "{{base_url}}/course-certification-mappings/1/" } },
+        { "name": "Delete Mapping", "request": { "method": "DELETE", "url": "{{base_url}}/course-certification-mappings/1/" } }
+      ]
+    }
+  ]
+}
