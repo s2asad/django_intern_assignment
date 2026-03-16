@@ -14,13 +14,15 @@ A Django REST Framework backend built using **APIView only** for managing Vendor
 │   ├── base_model.py              # Shared abstract base models
 │   ├── base_serializer.py
 │   └── utils.py                   # Shared utility functions
-├── vendor/                        # Master app
-├── product/                       # Master app
-├── course/                        # Master app
-├── certification/                 # Master app
-├── vendor_product_mapping/        # Mapping app
-├── product_course_mapping/        # Mapping app
-├── course_certification_mapping/  # Mapping app
+|--master_apps
+       ├── vendor/                        # Master app
+       ├── product/                       # Master app
+       ├── course/                        # Master app
+       ├── certification/                 # Master app
+|--mapping_apps
+       ├── vendor_product_mapping/        # Mapping app
+       ├── product_course_mapping/        # Mapping app
+       ├── course_certification_mapping/  # Mapping app
 ├── manage.py
 └── requirements.txt
 ```
